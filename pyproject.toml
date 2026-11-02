@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "glue2dbx"
+version = "0.1.0"
+description = "Assess, convert and reconcile AWS Glue jobs migrating to Databricks."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Prashanth Kumar" }]
+keywords = ["aws-glue", "databricks", "pyspark", "delta-lake", "data-migration", "data-engineering"]
+dependencies = ["click>=8.1"]
+
+[project.optional-dependencies]
+spark = ["pyspark>=3.4,<4"]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[project.scripts]
+glue2dbx = "glue2dbx.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+extend-exclude = ["examples/glue_jobs", "examples/converted"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["E501"]  # long lines are left to the formatter

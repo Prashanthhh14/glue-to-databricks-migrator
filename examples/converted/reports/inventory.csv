@@ -1,0 +1,5 @@
+job,lines_of_code,tier,auto,review,manual
+customer_events_flatten,32,3,6,0,2
+orders_daily_load,48,1,10,0,0
+positions_jdbc_extract,29,2,7,1,0
+trades_enrichment,31,2,9,1,0
